@@ -214,7 +214,8 @@ module Rafa
       def initialize(canvas, x, y, width, height, values, options = {})
         options_copy = options.clone
         super(canvas, options)
-        @canvas << "var #{@name} = Raphael('placeholder').g.barchart(#{x}, #{y}, #{width}, #{height}, #{values.to_json}, #{options_copy.to_json});"
+        puts "@canvas.name = #{@canvas.name}"
+        @canvas << "var #{@name} = #{@canvas.name}.g.barchart(#{x}, #{y}, #{width}, #{height}, #{values.to_json}, #{options_copy.to_json});"
         apply_attributes(options)
       end
     end
