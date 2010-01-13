@@ -214,40 +214,8 @@ module Rafa
       def initialize(canvas, x, y, width, height, values, options = {})
         options_copy = options.clone
         super(canvas, options)
-
-        @canvas << "var #{@name} = Raphael(#{@canvas.name}).g.barchart(#{x}, #{y}, #{width}, #{height}, [#{array_to_string(values)}], {#{hash_to_string(options_copy)}});"
+        @canvas << "var #{@name} = Raphael('placeholder').g.barchart(#{x}, #{y}, #{width}, #{height}, #{values.to_json}, #{options_copy.to_json});"
         apply_attributes(options)
-      end
-
-      def array_to_string(arr)
-        vals = ""
-        puts arr
-        arr.each_with_index do |v, i|
-        if v.is_a? Array
-          vals << "[#{array_to_string(v)}]"
-        elsif v == true || v == nil
-          vals << boolean_to_s(v)
-        else
-           vals << v.to_s
-         end
-          vals << ", " if i < arr.size - 1
-        end
-        puts vals
-        vals
-      end
-
-      def hash_to_string(h)
-         opts = ""
-         h.each do |key, value|
-           val = value
-           val = boolean_to_s(value) if value == true || value == nil
-           opts << "#{key.to_s}: #{val}"
-         end
-         opts
-      end
-
-      def boolean_to_s(b)
-         b ? 'true' : 'false'
       end
     end
 
