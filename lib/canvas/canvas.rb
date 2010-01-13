@@ -31,7 +31,6 @@ module Rafa
     
     # Class that represents the raphael +canvas+ element.
     class Canvas
-
       include Rafa::Util
 
       attr_accessor :dom_element, :contents, :name, :width, :height
@@ -68,7 +67,7 @@ module Rafa
         Rect.new(self, *args)
       end
 
-      # Generates a +Ellipse+ object
+      # Generates an +Ellipse+ object
       def ellipse(*args)
         Ellipse.new(self, *args)
       end
@@ -78,7 +77,12 @@ module Rafa
         Text.new(self, *args)
       end
       
-      # Generates a +Path+ object. It yields itself if if block given.
+      # Generates a +Bar+ object
+      def bar(*args)
+        Bar.new(self, *args)
+      end
+      
+      # Generates a +Path+ object. It yields itself if given a block.
       def path(*args, &block)
         Path.new(self, *args, &block)
       end
