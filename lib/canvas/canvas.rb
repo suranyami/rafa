@@ -77,9 +77,24 @@ module Rafa
         Text.new(self, *args)
       end
       
-      # Generates a +Bar+ object
-      def bar(*args)
+      # Generates a +Bar+ chart object
+      def barchart(*args)
         Bar.new(self, *args)
+      end
+      
+      # Generates a +Dot+ chart object
+      def dotchart(*args)
+        Dot.new(self, *args)
+      end
+      
+      # Generates a +Line+ chart object
+      def linechart(*args)
+        Line.new(self, *args)
+      end
+      
+      # Generates a +Pie+ chart object
+      def piechart(*args)
+        Pie.new(self, *args)
       end
       
       # Generates a +Path+ object. It yields itself if given a block.

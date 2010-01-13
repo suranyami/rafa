@@ -214,15 +214,43 @@ module Rafa
       def initialize(canvas, x, y, width, height, values, options = {})
         options_copy = options.clone
         super(canvas, options)
-        puts "@canvas.name = #{@canvas.name}"
         @canvas << "var #{@name} = #{@canvas.name}.g.barchart(#{x}, #{y}, #{width}, #{height}, #{values.to_json}, #{options_copy.to_json});"
         apply_attributes(options)
       end
     end
+    
+    # Represents the _dotchart_ object in raphael
+    class Dot < BasicShape
+      def initialize(canvas, x, y, width, height, valuesx, valuesy, size, options = {})
+        options_copy = options.clone
+        super(canvas, options)
+        @canvas << "var #{@name} = #{@canvas.name}.g.dotchart(#{x}, #{y}, #{width}, #{height}, #{valuesx.to_json}, #{valuesy.to_json}, #{size.to_json}, #{options_copy.to_json});"
+        apply_attributes(options)
+      end
+    end
+    
+    # Represents the _dotchart_ object in raphael
+    class Line < BasicShape
+      def initialize(canvas, x, y, width, height, valuesx, valuesy, options = {})
+        options_copy = options.clone
+        super(canvas, options)
+        @canvas << "var #{@name} = #{@canvas.name}.g.linechart(#{x}, #{y}, #{width}, #{height}, #{valuesx.to_json}, #{valuesy.to_json}, #{options_copy.to_json});"
+        apply_attributes(options)
+      end
+    end
 
+    # Represents the _dotchart_ object in raphael
+    class Pie < BasicShape
+      def initialize(canvas, cx, cy, r, values, labels, options = {})
+        options_copy = options.clone
+        super(canvas, options)
+        @canvas << "var #{@name} = #{@canvas.name}.g.piechart(#{cx}, #{cy}, #{r.to_json}, #{values.to_json}, #{options_copy.to_json});"
+        apply_attributes(options)
+      end
+    end
+    
     # Represents the _path_ object in raphael
     class Path < BasicShape
-
       def initialize(canvas, attributes_or_path = {}, path = nil, &block)
         if attributes_or_path.kind_of? String
           path = attributes_or_path
