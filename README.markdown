@@ -12,7 +12,7 @@ Installation
 
 To install as a plugin:
 
-./script/plugin install git://github.com/suranyami/rafa.git
+    ./script/plugin install git://github.com/suranyami/rafa.git
 
 Example
 =======
